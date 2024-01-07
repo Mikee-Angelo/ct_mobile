@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:scanner/bloc.dart';
 import 'package:scanner/pages/login/repo/UserRepo.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/core/themes/sizing.dart';
 import 'package:scanner/pages/about/About.dart';
@@ -14,8 +13,9 @@ import 'package:scanner/pages/tips/Tips.dart';
 
 class App extends StatelessWidget {
   Future<Widget> setInitialRoute() async {
-    final storage = new FlutterSecureStorage();
-    final String? value = await storage.read(key: 'token');
+    // final String? value = await storage.read(key: 'token');
+
+    final String? value = '';
 
     if (value != null) {
       return Home();

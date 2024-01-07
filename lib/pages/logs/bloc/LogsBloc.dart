@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:scanner/bloc.dart';
 import 'package:scanner/pages/logs/repo/LogsRepo.dart';
 
 class LogsBloc implements Bloc {
   final _repo = LogsRepo();
-  final storage = new FlutterSecureStorage();
 
   final logs = BehaviorSubject();
   final logsLatest = BehaviorSubject();
@@ -15,7 +13,9 @@ class LogsBloc implements Bloc {
     required BuildContext context,
     required String uuid,
   }) async {
-    final String? token = await storage.read(key: 'token');
+    // final String? token = await storage.read(key: 'token');
+
+    final String? token = '';
 
     await _repo.init(token: token!, uuid: uuid).then((value) {
       // if (value.error == null) {
@@ -29,7 +29,9 @@ class LogsBloc implements Bloc {
   }
 
   getAllLogs() async {
-    final String? token = await storage.read(key: 'token');
+    // final String? token = await storage.read(key: 'token');
+
+    final String? token = '';
 
     await _repo.all(token: token!).then((value) {
       // logs.sink.add(value.data);
@@ -39,7 +41,9 @@ class LogsBloc implements Bloc {
   }
 
   getLatestLogs() async {
-    final String? token = await storage.read(key: 'token');
+    // final String? token = await storage.read(key: 'token');
+
+    final String? token = '';
 
     await _repo.latest(token: token!).then((value) {}).catchError((error) {
       print('Error: $error');

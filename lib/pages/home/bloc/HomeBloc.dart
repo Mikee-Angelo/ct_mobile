@@ -1,13 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:scanner/pages/login/model/UserModel.dart';
 
 import '../../../bloc.dart';
 
 class HomeBloc implements Bloc {
-  final storage = new FlutterSecureStorage();
 
   qrScanner({required BuildContext context}) async {
     // final result = await BarcodeScanner.scan();
@@ -15,7 +13,8 @@ class HomeBloc implements Bloc {
   }
 
   Future<void> getProfile() async {
-    final String? value = await storage.read(key: 'user');
+    // final String? value = await storage.read(key: 'user');
+    final String? value = '';
     var datas = json.decode(value ?? '');
 
     return datas;
