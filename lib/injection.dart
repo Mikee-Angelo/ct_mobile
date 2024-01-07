@@ -9,6 +9,7 @@ import 'package:scanner/features/auth/data/datasources/auth_remote.dart';
 import 'package:scanner/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:scanner/features/auth/domain/repositories/auth_repository.dart';
 import 'package:scanner/features/auth/domain/usecases/login_use_case.dart';
+import 'package:scanner/features/auth/domain/usecases/register_usecase.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
 
 final sl = GetIt.instance;
@@ -46,12 +47,13 @@ Future<void> init() async {
 
     //Usecase
     ..registerLazySingleton(() => LoginUsecase(sl()))
+    ..registerLazySingleton(() => RegisterUsecase(sl()))
 
     //Datasource - Auth
     ..registerLazySingleton(() => AuthRemote(sl()))
 
     //Blocs
-    ..registerFactory(() => AuthBloc(sl()))
+    ..registerFactory(() => AuthBloc(sl(), sl()))
 
     //Repository
     ..registerLazySingleton<AuthRepository>(
