@@ -7,16 +7,15 @@ import 'package:scanner/pages/login/repo/UserRepo.dart';
 import 'package:scanner/validations/LoginValidation.dart';
 import 'package:scanner/pages/login/repo/LoginRepo.dart';
 
-class LoginBloc with LoginValidation implements Bloc {
+class LoginBloc implements Bloc {
   LoginRepo repo = LoginRepo();
   UserRepo userRepo = UserRepo();
 
   final phone = BehaviorSubject<String>();
   final password = BehaviorSubject<String>();
 
-  Stream<String> get phoneStream => phone.stream.transform(phoneValidate);
-  Stream<String> get passwordStream =>
-      password.stream.transform(passwordValidate);
+  Stream<String> get phoneStream => phone.stream;
+  Stream<String> get passwordStream => password.stream;
 
   Stream<bool> get validSubmit =>
       Rx.combineLatest2(phoneStream, passwordStream, (phone, password) => true);

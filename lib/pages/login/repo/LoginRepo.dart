@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scanner/pages/login/model/LoginModel.dart';
+import 'package:scanner/features/auth/data/models/login_model.dart';
 import 'package:scanner/pages/login/provider/LoginProvider.dart';
 
 class LoginRepo {

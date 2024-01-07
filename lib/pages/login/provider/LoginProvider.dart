@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:scanner/features/auth/data/models/login_model.dart';
 import 'package:scanner/settings/settings.dart';
-import 'package:scanner/pages/login/model/LoginModel.dart';
 import 'package:http/http.dart' as http;
 
 class LoginProvider {

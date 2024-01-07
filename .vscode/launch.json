@@ -7,7 +7,11 @@
         {
             "name": "scanner",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "toolArgs": [
+                "--dart-define-from-file",
+                ".secrets/dev.json"
+            ]
         }
     ]
 }
