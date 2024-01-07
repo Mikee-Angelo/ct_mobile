@@ -10,3 +10,12 @@ class GotLogin extends AuthState {
   @override
   List<Object?> get props => [res];
 }
+
+class GotRegister extends AuthState {
+  GotRegister(this.res);
+
+  final RegisterEntity res;
+
+  @override
+  List<Object?> get props => [res];
+}
