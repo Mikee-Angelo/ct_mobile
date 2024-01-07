@@ -5,12 +5,12 @@ import 'package:scanner/pages/register/provider/RegisterProvider.dart';
 class RegisterRepo {
   final i = RegisterProvider();
 
-  Future<RegisterModel> init({
-    @required String firstName,
-    @required String lastName,
-    @required String address,
-    @required String phone,
-    @required String password,
+  Future<RegisterModel?> init({
+    required String firstName,
+    required String lastName,
+    required String address,
+    required String phone,
+    required String password,
   }) =>
       i.init(
         firstName: firstName,

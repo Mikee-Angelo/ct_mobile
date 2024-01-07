@@ -11,42 +11,37 @@ import 'package:http/http.dart' as http;
 class LogsProvider {
   Settings settings = Settings();
 
-  Future<LogsModel> init({
-    @required String token,
-    @required String uuid,
+  Future<LogsModel?> init({
+    required String token,
+    required String uuid,
   }) async {
     String url = settings.url + 'logs/create';
 
-    return await http.post(url, headers: {
+    return await http.post(Uri.parse(url), headers: {
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
       HttpHeaders.authorizationHeader: 'Bearer $token',
     }, body: {
       'places_id': uuid,
-    }).then(
-      (value) => LogsModel.fromJson(json.decode(value.body)),
-    );
+    }).then((value) => null);
   }
 
-  Future<AllLogsModel> all({@required String token}) async {
+  Future<AllLogsModel?> all({required String token}) async {
     String url = settings.url + 'logs';
 
-    return await http.post(url, headers: {
+    return await http.post(Uri.parse(url), headers: {
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.authorizationHeader: 'Bearer $token',
-    }).then(
-      (value) => AllLogsModel.fromJson(json.decode(value.body)),
-    );
+    }).then((value) => null);
   }
 
-  Future<LatestLogsModel> latest({@required String token}) async {
+  Future<LatestLogsModel?
+  > latest({required String token}) async {
     String url = settings.url + 'logs/latest';
 
-    return await http.post(url, headers: {
+    return await http.post(Uri.parse(url), headers: {
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.authorizationHeader: 'Bearer $token',
-    }).then(
-      (value) => LatestLogsModel.fromJson(json.decode(value.body)),
-    );
+    }).then((value) => null);
   }
 }

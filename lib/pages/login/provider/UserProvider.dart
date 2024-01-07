@@ -9,14 +9,12 @@ import 'package:http/http.dart' as http;
 class UserProvider {
   Settings settings = Settings();
 
-  Future<UserModel> init({@required String token}) async {
+  Future<UserModel?> init({required String token}) async {
     String url = settings.url + 'auth/me';
 
-    return await http.post(url, headers: {
+    return await http.post(Uri.parse(url), headers: {
       HttpHeaders.acceptHeader: 'application/json',
       HttpHeaders.authorizationHeader: 'Bearer $token',
-    }).then(
-      (value) => UserModel.fromJson(json.decode(value.body)),
-    );
+    }).then((value) => null);
   }
 }

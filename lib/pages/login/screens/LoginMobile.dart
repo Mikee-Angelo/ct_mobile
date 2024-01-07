@@ -58,7 +58,7 @@ class LoginMobileState extends State<LoginMobile> {
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelText: 'Phone Number',
-                            errorText: snapshot.error,
+                            // errorText: snapshot.error,
                             counterText: "",
                           ),
                           keyboardType: TextInputType.phone,
@@ -81,7 +81,7 @@ class LoginMobileState extends State<LoginMobile> {
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelText: 'Password',
-                            errorText: snapshot.error,
+                            // errorText: snapshot.error,
                           ),
                         );
                       },

@@ -1,9 +1,9 @@
 import 'package:badges/badges.dart';
 import 'package:flustars/flustars.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Badge;
 
 class CustomBadge {
-  Widget newBadge({@required DateTime date}) {
+  Widget newBadge({required DateTime date}) {
     DateTime now = DateTime.now();
 
     int diff = now.difference(date).inMinutes;
@@ -22,9 +22,6 @@ class CustomBadge {
               color: Colors.white,
             ),
           ),
-          shape: BadgeShape.square,
-          borderRadius: 20,
-          toAnimate: false,
         ),
         SizedBox(
           height: ScreenUtil.getInstance().getHeight(8),
@@ -33,5 +30,3 @@ class CustomBadge {
     );
   }
 }
-
-final customBadge = CustomBadge();

@@ -32,7 +32,7 @@ class RegisterBloc with RegisterValidation implements Bloc {
       passwordStream,
       (a, b, c, d, e) => true);
 
-  submit({@required BuildContext context}) async {
+  submit({required BuildContext context}) async {
     return await _repo
         .init(
       firstName: firstName.value,
@@ -42,14 +42,14 @@ class RegisterBloc with RegisterValidation implements Bloc {
       password: password.value,
     )
         .then((value) {
-      if (value.errors == null) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Login(),
-          ),
-        );
-      }
+      // if (value.errors == null) {
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => Login(),
+      //     ),
+      //   );
+      // }
     }).catchError((error) {
       print('Error : $error');
     });

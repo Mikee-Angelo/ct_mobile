@@ -4,8 +4,8 @@ import 'package:scanner/pages/home/bloc/HomeBloc.dart';
 
 class AppBarMain extends AppBar {
   AppBarMain({
-    Key key,
-    BuildContext context,
+    Key? key,
+    required BuildContext context,
   }) : super(
           key: key,
           backgroundColor: Colors.white,
@@ -28,12 +28,15 @@ class AppBarMain extends AppBar {
                         return Container();
                       }
 
-                      return Text(
-                        'Hello, ${snapshot.data["first_name"]}',
-                        style: TextStyle(
-                          fontSize: ScreenUtil.getInstance().getSp(17),
-                        ),
-                      );
+                      //Note: This will be removed on next pull request
+                      return SizedBox.shrink();
+
+                      // return Text(
+                      //   'Hello, ${snapshot.data["first_name"]}',
+                      //   style: TextStyle(
+                      //     fontSize: ScreenUtil.getInstance().getSp(17),
+                      //   ),
+                      // );
                     },
                   ),
                 ),
@@ -41,32 +44,4 @@ class AppBarMain extends AppBar {
             )
           ],
         );
-  // Widget build(BuildContext context) {
-  //   // TODO: implement build
-  //   return AppBar(
-  //     backgroundColor: Colors.white,
-  //     elevation: 0.0,
-  //     iconTheme: IconThemeData(
-  //       color: Theme.of(context).primaryColor,
-  //     ),
-  //     actions: [
-  //       Column(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: [
-  //           Padding(
-  //             padding: EdgeInsets.only(
-  //               right: ScreenUtil.getInstance().getWidth(20),
-  //             ),
-  //             child: Text(
-  //               'Hello, John',
-  //               style: TextStyle(
-  //                 fontSize: ScreenUtil.getInstance().getSp(17),
-  //               ),
-  //             ),
-  //           ),
-  //         ],
-  //       )
-  //     ],
-  //   );
-  // }
 }
