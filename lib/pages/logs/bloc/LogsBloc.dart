@@ -11,37 +11,37 @@ class LogsBloc implements Bloc {
   final logs = BehaviorSubject();
   final logsLatest = BehaviorSubject();
 
-  submit({@required BuildContext context, @required String uuid}) async {
-    String token = await storage.read(key: 'token');
+  submit({
+    required BuildContext context,
+    required String uuid,
+  }) async {
+    final String? token = await storage.read(key: 'token');
 
-    await _repo.init(token: token, uuid: uuid).then((value) {
-      if (value.error == null) {
-        Navigator.pushNamed(context, '/home');
-      } else {
-        print('Error: ${value.error.toString()}');
-      }
+    await _repo.init(token: token!, uuid: uuid).then((value) {
+      // if (value.error == null) {
+      //   Navigator.pushNamed(context, '/home');
+      // } else {
+      //   print('Error: ${value.error.toString()}');
+      // }
     }).catchError((error) {
       print('Error: $error');
     });
   }
 
   getAllLogs() async {
-    String token = await storage.read(key: 'token');
+    final String? token = await storage.read(key: 'token');
 
-    await _repo.all(token: token).then((value) {
-      logs.sink.add(value.data);
+    await _repo.all(token: token!).then((value) {
+      // logs.sink.add(value.data);
     }).catchError((error) {
       print('Error: $error');
     });
   }
 
   getLatestLogs() async {
-    String token = await storage.read(key: 'token');
+    final String? token = await storage.read(key: 'token');
 
-    await _repo.latest(token: token).then((value) {
-      print('VALUE: ${value.data.fullName}');
-      logsLatest.sink.add(value.data);
-    }).catchError((error) {
+    await _repo.latest(token: token!).then((value) {}).catchError((error) {
       print('Error: $error');
     });
   }

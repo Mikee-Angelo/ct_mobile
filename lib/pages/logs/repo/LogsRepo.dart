@@ -7,14 +7,14 @@ import 'package:scanner/pages/logs/provider/LogsProvider.dart';
 class LogsRepo {
   final i = LogsProvider();
 
-  Future<LogsModel> init({
-    @required String token,
-    @required String uuid,
+  Future<LogsModel?> init({
+    required String token,
+    required String uuid,
   }) =>
       i.init(token: token, uuid: uuid);
 
-  Future<AllLogsModel> all({@required String token}) => i.all(token: token);
+  Future<AllLogsModel?> all({required String token}) => i.all(token: token);
 
-  Future<LatestLogsModel> latest({@required String token}) =>
+  Future<LatestLogsModel?> latest({required String token}) =>
       i.latest(token: token);
 }

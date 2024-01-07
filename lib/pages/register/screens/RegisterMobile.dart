@@ -1,8 +1,7 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:scanner/pages/login/Login.dart';
+import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/pages/register/bloc/RegisterBloc.dart';
 
 class RegisterMobile extends StatefulWidget {
@@ -62,7 +61,7 @@ class RegisterMobileState extends State<RegisterMobile> {
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelText: 'First Name',
-                            errorText: snapshot.error,
+                            // errorText: snapshot.error,
                           ),
                         );
                       },
@@ -79,7 +78,7 @@ class RegisterMobileState extends State<RegisterMobile> {
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelText: 'Last Name',
-                            errorText: snapshot.error,
+                            // errorText: snapshot.error,
                           ),
                         );
                       },
@@ -96,7 +95,7 @@ class RegisterMobileState extends State<RegisterMobile> {
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelText: 'Address',
-                            errorText: snapshot.error,
+                            // errorText: snapshot.error,
                           ),
                         );
                       },
@@ -112,7 +111,7 @@ class RegisterMobileState extends State<RegisterMobile> {
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelText: 'Contact Number',
-                            errorText: snapshot.error,
+                            // errorText: snapshot.error,
                           ),
                         );
                       },
@@ -130,7 +129,7 @@ class RegisterMobileState extends State<RegisterMobile> {
                           decoration: InputDecoration(
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                             labelText: 'Password',
-                            errorText: snapshot.error,
+                            // errorText: snapshot.error,
                           ),
                         );
                       },
@@ -155,7 +154,7 @@ class RegisterMobileState extends State<RegisterMobile> {
                             text: TextSpan(
                               text: 'I agree to the ',
                               style: TextStyle(
-                                color: Hexcolor('#212121'),
+                                color: Branding.textColor,
                                 fontSize: ScreenUtil.getInstance().getSp(11),
                               ),
                               children: <TextSpan>[

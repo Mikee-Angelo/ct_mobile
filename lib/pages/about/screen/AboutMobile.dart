@@ -1,13 +1,12 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
+import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
 import 'package:scanner/pages/drawer/AppDrawer.dart';
 
 class AboutMobile extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return AboutMobileState();
   }
 }
@@ -84,7 +83,7 @@ class AboutMobileState extends State<AboutMobile> {
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non finibus metus.',
                       style: TextStyle(
                         fontSize: ScreenUtil.getInstance().getSp(12),
-                        color: Hexcolor('#707070'),
+                        color: Branding.textColor,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -130,7 +129,7 @@ class AboutMobileState extends State<AboutMobile> {
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non finibus metus.',
                       style: TextStyle(
                         fontSize: ScreenUtil.getInstance().getSp(12),
-                        color: Hexcolor('#707070'),
+                        color: Branding.textColor
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -176,7 +175,7 @@ class AboutMobileState extends State<AboutMobile> {
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non finibus metus.',
                       style: TextStyle(
                         fontSize: ScreenUtil.getInstance().getSp(12),
-                        color: Hexcolor('#707070'),
+                        color: Branding.textColor,
                       ),
                       textAlign: TextAlign.center,
                     ),

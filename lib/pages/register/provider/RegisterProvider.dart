@@ -9,17 +9,17 @@ import 'package:http/http.dart' as http;
 class RegisterProvider {
   Settings settings = Settings();
 
-  Future<RegisterModel> init({
-    @required String firstName,
-    @required String lastName,
-    @required String address,
-    @required String phone,
-    @required String password,
+  Future<RegisterModel?> init({
+    required String firstName,
+    required String lastName,
+    required String address,
+    required String phone,
+    required String password,
   }) async {
     String url = settings.url + 'register';
 
     return await http.post(
-      url,
+      Uri.parse(url),
       headers: {
         HttpHeaders.acceptHeader: 'application/json',
       },
@@ -30,6 +30,6 @@ class RegisterProvider {
         'phone': phone,
         'password': password,
       },
-    ).then((value) => RegisterModel.fromJson(json.decode(value.body)));
+    ).then((value) => null);
   }
 }

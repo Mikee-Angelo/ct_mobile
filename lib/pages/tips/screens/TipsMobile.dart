@@ -1,6 +1,7 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
 import 'package:scanner/pages/drawer/AppDrawer.dart';
 
@@ -77,7 +78,7 @@ class TipsMobileState extends State<TipsMobile> {
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non finibus metus.',
                       style: TextStyle(
                         fontSize: ScreenUtil.getInstance().getSp(12),
-                        color: Hexcolor('#707070'),
+                        color: Branding.hintTextColor,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -116,7 +117,7 @@ class TipsMobileState extends State<TipsMobile> {
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non finibus metus.',
                       style: TextStyle(
                         fontSize: ScreenUtil.getInstance().getSp(12),
-                        color: Hexcolor('#707070'),
+                        color: Branding.hintTextColor,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -155,7 +156,7 @@ class TipsMobileState extends State<TipsMobile> {
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non finibus metus.',
                       style: TextStyle(
                         fontSize: ScreenUtil.getInstance().getSp(12),
-                        color: Hexcolor('#707070'),
+                        color: Branding.hintTextColor,
                       ),
                       textAlign: TextAlign.center,
                     ),

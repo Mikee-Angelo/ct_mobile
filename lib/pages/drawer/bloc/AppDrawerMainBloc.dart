@@ -6,7 +6,7 @@ import 'package:scanner/pages/loading/Loading.dart';
 import 'package:scanner/pages/login/Login.dart';
 
 class AppDrawerMainBloc implements Bloc {
-  logout({@required BuildContext context}) async {
+  logout({required BuildContext context}) async {
     final storage = new FlutterSecureStorage();
 
     Navigator.push(

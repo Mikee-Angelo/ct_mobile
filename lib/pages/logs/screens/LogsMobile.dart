@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
+import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
 import 'package:scanner/pages/drawer/AppDrawer.dart';
 import 'package:scanner/pages/logs/bloc/LogsBloc.dart';
@@ -101,13 +102,15 @@ class LogsMobileState extends State<LogsMobile> {
                     );
                   }
 
-                  return ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return buildBody(
-                          context: context, data: snapshot.data[index]);
-                    },
-                  );
+                  // Note: This will be removed on next pull request
+                  return SizedBox.shrink();
+                  // return ListView.builder(
+                  //   itemCount: snapshot.data.length ?? 0,
+                  //   itemBuilder: (BuildContext context, int index) {
+                  //     return buildBody(
+                  //         context: context, data: snapshot.data[index]);
+                  //   },
+                  // );
                 },
               ),
             ),
@@ -117,7 +120,10 @@ class LogsMobileState extends State<LogsMobile> {
     );
   }
 
-  Widget buildBody({@required BuildContext context, @required data}) {
+  Widget buildBody({
+    required BuildContext context,
+    required data,
+  }) {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: ScreenUtil.getInstance().getWidth(30),
@@ -152,7 +158,7 @@ class LogsMobileState extends State<LogsMobile> {
                         Text(
                           data.address,
                           style: TextStyle(
-                            color: Hexcolor('#707070'),
+                            color: Branding.textColor,
                             fontSize: ScreenUtil.getInstance().getSp(11),
                           ),
                         ),
@@ -165,7 +171,7 @@ class LogsMobileState extends State<LogsMobile> {
                               .add_jm()
                               .format(DateTime.parse(data.createdAt).toLocal()),
                           style: TextStyle(
-                            color: Hexcolor('#707070'),
+                            color: Branding.textColor,
                             fontSize: ScreenUtil.getInstance().getSp(10),
                           ),
                         ),
@@ -173,7 +179,7 @@ class LogsMobileState extends State<LogsMobile> {
                           DateFormat.EEEE()
                               .format(DateTime.parse(data.createdAt).toLocal()),
                           style: TextStyle(
-                            color: Hexcolor('#707070'),
+                            color: Branding.textColor,
                             fontSize: ScreenUtil.getInstance().getSp(10),
                           ),
                         ),
@@ -182,7 +188,7 @@ class LogsMobileState extends State<LogsMobile> {
                   ),
                   Column(
                     children: [
-                      customBadge.newBadge(
+                      CustomBadge().newBadge(
                         date: DateTime.parse(data.createdAt).toLocal(),
                       ),
                       userIcon.init(

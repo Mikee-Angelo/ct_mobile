@@ -9,14 +9,14 @@ import '../../../bloc.dart';
 class HomeBloc implements Bloc {
   final storage = new FlutterSecureStorage();
 
-  qrScanner({@required BuildContext context}) async {
+  qrScanner({required BuildContext context}) async {
     // final result = await BarcodeScanner.scan();
     Navigator.pushNamed(context, '/qr');
   }
 
   Future<void> getProfile() async {
-    String value = await storage.read(key: 'user');
-    var datas = json.decode(value);
+    final String? value = await storage.read(key: 'user');
+    var datas = json.decode(value ?? '');
 
     return datas;
   }

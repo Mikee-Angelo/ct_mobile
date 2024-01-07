@@ -22,7 +22,7 @@ class QrMobileState extends State<QrMobile> {
   var qrText = '';
   var flashState = flashOn;
   var cameraState = frontCamera;
-  QRViewController controller;
+  late QRViewController controller;
 
   Widget build(BuildContext context) {
     // TODO: implement build
