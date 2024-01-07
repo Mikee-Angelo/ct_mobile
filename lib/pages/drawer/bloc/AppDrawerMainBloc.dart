@@ -1,16 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scanner/bloc.dart';
-import 'package:scanner/pages/loading/Loading.dart';
-import 'package:scanner/pages/login/Login.dart';
+import 'package:scanner/features/auth/presentation/pages/login_page.dart';
 
 class AppDrawerMainBloc implements Bloc {
   logout({required BuildContext context}) async {
-
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Login(),
+        builder: (context) => LoginPage(),
       ),
     );
     // await storage.deleteAll();

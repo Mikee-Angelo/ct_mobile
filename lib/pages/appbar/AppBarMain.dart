@@ -24,12 +24,12 @@ class AppBarMain extends AppBar {
                   child: FutureBuilder(
                     future: home.getProfile(),
                     builder: (context, snapshot) {
-                      if (snapshot.data == null) {
-                        return Container();
-                      }
+                      // if (snapshot.data == null) {
+                      //   return Container();
+                      // }
 
                       //Note: This will be removed on next pull request
-                      return SizedBox.shrink();
+                      return const SizedBox.shrink();
 
                       // return Text(
                       //   'Hello, ${snapshot.data["first_name"]}',
