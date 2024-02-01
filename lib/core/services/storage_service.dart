@@ -3,7 +3,7 @@ import 'package:scanner/core/errors/exception.dart';
 
 abstract class StorageService {
   Future<void> setStorageValue(String key, dynamic value);
-  Future<String> getStringValue(String key);
+  String getStringValue(String key);
   Future<void> deleteStorage(String key);
 }
 
@@ -18,9 +18,11 @@ class StorageServiceImpl extends StorageService {
   }
 
   @override
-  Future<String> getStringValue(String key) async {
+  String getStringValue(String key) {
     try {
-      return await getStringValue(key);
+      final data = getStringAsync(key);
+      if(data.isEmptyOrNull) throw Exception();
+      return data;
     } on Exception {
       throw const StorageException();
     }

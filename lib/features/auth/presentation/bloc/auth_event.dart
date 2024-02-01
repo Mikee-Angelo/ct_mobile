@@ -18,3 +18,8 @@ class OnRegister extends AuthEvent {
   @override
   List<Object?> get props => [req];
 }
+
+class OnCheckToken extends AuthEvent {
+  @override
+  List<Object?> get props => [];
+}
