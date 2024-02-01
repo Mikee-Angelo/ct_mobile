@@ -8,6 +8,7 @@ import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/core/themes/sizing.dart';
 import 'package:scanner/features/auth/data/models/login_params_model.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:scanner/features/auth/presentation/pages/register_page.dart';
 import 'package:scanner/pages/home/screens/HomeMobile.dart';
 
 class LoginPage extends StatefulWidget {
@@ -120,7 +121,7 @@ class LoginPageState extends State<LoginPage> {
                       height: ScreenUtil.getInstance().getHeight(10),
                     ),
                     GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, '/register'),
+                      onTap: () => const RegisterPage().launch(context),
                       child: Text(
                         'Create Account',
                         style: TextStyle(

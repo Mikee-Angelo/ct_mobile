@@ -4,16 +4,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/core/themes/sizing.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:scanner/features/auth/presentation/pages/login_page.dart';
-import 'package:scanner/features/auth/presentation/pages/register_page.dart';
+import 'package:scanner/features/route/presentation/bloc/route_bloc.dart';
+import 'package:scanner/features/route/presentation/pages/root_page.dart';
 import 'package:scanner/injection.dart';
-import 'package:scanner/pages/about/About.dart';
-import 'package:scanner/pages/home/Home.dart';
-import 'package:scanner/pages/loading/Loading.dart';
-import 'package:scanner/pages/logs/Logs.dart';
-import 'package:scanner/pages/privacy/Privacy.dart';
-import 'package:scanner/pages/qr/Qr.dart';
-import 'package:scanner/pages/tips/Tips.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -23,6 +16,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => sl.get<AuthBloc>()),
+        BlocProvider(create: (_) => sl.get<RouteBloc>()),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -41,17 +35,7 @@ class App extends StatelessWidget {
             ),
           ),
         ),
-        home: const LoginPage(),
-        routes: {
-          '/register': (c) => const RegisterPage(),
-          '/home': (c) => Home(),
-          '/logs': (c) => Logs(),
-          '/privacy': (c) => Privacy(),
-          '/about': (c) => About(),
-          '/tips': (c) => Tips(),
-          '/qr': (c) => Qr(),
-          '/loading': (c) => Loading(),
-        },
+        home: const RootPage(),
         builder: EasyLoading.init(),
       ),
     );
