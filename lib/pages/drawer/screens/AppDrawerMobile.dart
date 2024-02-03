@@ -7,7 +7,6 @@ import 'package:scanner/pages/home/bloc/HomeBloc.dart';
 class AppDrawerMobile extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return DrawerMobileState();
   }
 }
@@ -15,7 +14,6 @@ class AppDrawerMobile extends StatefulWidget {
 class DrawerMobileState extends State<AppDrawerMobile> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Drawer(
       child: FutureBuilder(
         future: home.getProfile(),
