@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:scanner/features/auth/presentation/pages/login_page.dart';
+import 'package:scanner/features/scan/presentation/pages/scan_page.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
 import 'package:scanner/pages/drawer/screens/app_drawer_widget.dart';
 import 'package:scanner/pages/home/bloc/HomeBloc.dart';
 import 'package:scanner/pages/logs/bloc/LogsBloc.dart';
 import 'package:scanner/settings/settings.dart';
 
-class HomeMobile extends StatefulWidget {
-  const HomeMobile({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<StatefulWidget> createState() => HomeMobileState();
+  State<StatefulWidget> createState() => HomePageState();
 }
 
-class HomeMobileState extends State<HomeMobile> {
+class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
@@ -39,6 +41,15 @@ class HomeMobileState extends State<HomeMobile> {
         backgroundColor: Colors.white,
         appBar: AppBarMain(context: context),
         drawer: const AppDrawerWidget(),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: _onScan,
+          backgroundColor: Branding.primaryColor,
+          label: const Icon(
+            Icons.qr_code,
+            color: Colors.white,
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         body: FutureBuilder(
           future: home.getProfile(),
           builder: (context, snapshot) {
@@ -291,5 +302,9 @@ class HomeMobileState extends State<HomeMobile> {
         ),
       ),
     );
+  }
+
+  void _onScan() {
+    const ScanPage().launch(context);
   }
 }

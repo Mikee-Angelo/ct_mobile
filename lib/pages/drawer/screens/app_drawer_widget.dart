@@ -1,9 +1,11 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:scanner/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:scanner/features/profile/presentation/widgets/profile_details_widget.dart';
+import 'package:scanner/pages/home/screens/home_page.dart';
 
 class AppDrawerWidget extends StatefulWidget {
   const AppDrawerWidget({super.key});
@@ -60,7 +62,7 @@ class DrawerMobileState extends State<AppDrawerWidget> {
                       ),
                     ),
                   ),
-                  onTap: () => Navigator.pushReplacementNamed(context, '/home'),
+                  onTap: () => const HomePage().launch(context),
                 ),
                 ListTile(
                   title: Padding(
