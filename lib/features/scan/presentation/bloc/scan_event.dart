@@ -6,3 +6,11 @@ abstract class ScanEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class OnScan extends ScanEvent {
+  const OnScan(this.code);
+  final String code;
+
+  @override
+  List<Object> get props => [code];
+}
