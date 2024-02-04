@@ -13,15 +13,12 @@ class HomeMobile extends StatefulWidget {
   const HomeMobile({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return HomeMobileState();
-  }
+  State<StatefulWidget> createState() => HomeMobileState();
 }
 
 class HomeMobileState extends State<HomeMobile> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     logs.getLatestLogs();

@@ -37,11 +37,12 @@ class AuthRepositoryImpl extends AuthRepository {
     try {
       final res = await _remote.register(params.toJson());
       await _storage.setStorageValue(
-          'token',
-          jsonEncode({
-            'token': res.token,
-            'message': res.message,
-          }));
+        'token',
+        jsonEncode({
+          'token': res.token,
+          'message': res.message,
+        }),
+      );
 
       await _storage.setStorageValue('profile', jsonEncode(res.user.toJson()));
 
@@ -68,6 +69,7 @@ class AuthRepositoryImpl extends AuthRepository {
     try {
       final res = await _remote.logout();
       await _storage.deleteStorage('token');
+      await _storage.deleteStorage('profile');
 
       return Right(res);
     } on DioException catch (e) {

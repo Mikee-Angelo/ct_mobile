@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/core/themes/sizing.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:scanner/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:scanner/features/route/presentation/bloc/route_bloc.dart';
 import 'package:scanner/features/route/presentation/pages/root_page.dart';
 import 'package:scanner/injection.dart';
@@ -17,6 +18,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => sl.get<AuthBloc>()),
         BlocProvider(create: (_) => sl.get<RouteBloc>()),
+        BlocProvider(create: (_) => sl.get<ProfileBloc>()),
       ],
       child: MaterialApp(
         theme: ThemeData(
