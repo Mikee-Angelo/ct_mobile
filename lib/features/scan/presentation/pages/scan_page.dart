@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:nb_utils/nb_utils.dart';
+import 'package:scanner/features/scan/presentation/bloc/scan_bloc.dart';
+import 'package:scanner/pages/home/screens/home_page.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({super.key});
@@ -9,25 +13,50 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
+  late MobileScannerController _controller;
+
+  @override
+  void initState() {
+    _controller = MobileScannerController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text('Scan QR'),
+    return BlocListener<ScanBloc, ScanState>(
+      listener: (context, state) {
+        if (state is GotScan) {
+          const HomePage().launch(context, isNewTask: true);
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: const Text('Scan QR'),
+        ),
+        extendBodyBehindAppBar: true,
+        extendBody: true,
+        body: MobileScanner(
+          onDetect: _onDetect,
+          controller: _controller,
+        ),
       ),
-      extendBodyBehindAppBar: true,
-      extendBody: true,
-      body: MobileScanner(onDetect: _onDetect),
     );
   }
 
   void _onDetect(BarcodeCapture barcodes) {
     final List<Barcode> bc = barcodes.barcodes;
-    for (final barcode in bc) {
-      debugPrint('Barcode found! ${barcode.rawValue}');
+    final barcode = bc.first;
 
-      return;
+    if (!barcode.rawValue.isEmptyOrNull) {
+      BlocProvider.of<ScanBloc>(context).add(OnScan(barcode.rawValue!));
+      _controller.stop();
     }
   }
 }

@@ -11,10 +11,13 @@ import 'package:scanner/features/auth/domain/domain.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:scanner/features/profile/data/repositories/repositories.dart';
 import 'package:scanner/features/profile/domain/repositories/repositories.dart';
-import 'package:scanner/features/profile/domain/usecases/get_profile_usecase.dart';
 import 'package:scanner/features/profile/domain/usecases/usecases.dart';
 import 'package:scanner/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:scanner/features/route/presentation/bloc/route_bloc.dart';
+import 'package:scanner/features/scan/data/repositories/scan_repository_impl.dart';
+import 'package:scanner/features/scan/domain/repositories/repositories.dart';
+import 'package:scanner/features/scan/domain/usecases/scan_usecase.dart';
+import 'package:scanner/features/scan/presentation/bloc/scan_bloc.dart';
 import 'features/profile/data/datasources/datasources.dart';
 
 final sl = GetIt.instance;
@@ -35,6 +38,7 @@ Future<void> init() async {
     ..registerFactory(() => RouteBloc())
     ..registerFactory(() => AuthBloc(sl(), sl(), sl(), sl()))
     ..registerFactory(() => ProfileBloc(sl(), sl()))
+    ..registerFactory(() => ScanBloc(sl()))
 
     //Usecase
     ..registerLazySingleton(() => LoginUsecase(sl()))
@@ -46,6 +50,9 @@ Future<void> init() async {
     ..registerLazySingleton(() => GetProfileUsecase(sl()))
     ..registerLazySingleton(() => GetCachedProfileUsecase(sl()))
 
+    // Usecase - Scan
+    ..registerLazySingleton(() => ScanUsecase(sl()))
+
     //Datasource - Auth
     ..registerLazySingleton(() => AuthRemote(sl()))
     ..registerLazySingleton(() => ProfileRemote(sl()))
@@ -54,7 +61,8 @@ Future<void> init() async {
     ..registerLazySingleton<AuthRepository>(
         () => AuthRepositoryImpl(sl(), sl()))
     ..registerLazySingleton<ProfileRepository>(
-        () => ProfileRepositoryImpl(sl(), sl()));
+        () => ProfileRepositoryImpl(sl(), sl()))
+    ..registerLazySingleton<ScanRepository>(() => ScanRepositoryImpl(sl()));
 
   sl<Dio>()
     ..options.baseUrl = Config.baseUrl

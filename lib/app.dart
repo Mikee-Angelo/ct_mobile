@@ -7,6 +7,7 @@ import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:scanner/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:scanner/features/route/presentation/bloc/route_bloc.dart';
 import 'package:scanner/features/route/presentation/pages/root_page.dart';
+import 'package:scanner/features/scan/presentation/bloc/scan_bloc.dart';
 import 'package:scanner/injection.dart';
 
 class App extends StatelessWidget {
@@ -19,6 +20,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => sl.get<AuthBloc>()),
         BlocProvider(create: (_) => sl.get<RouteBloc>()),
         BlocProvider(create: (_) => sl.get<ProfileBloc>()),
+        BlocProvider(create: (_) => sl.get<ScanBloc>()),
       ],
       child: MaterialApp(
         theme: ThemeData(

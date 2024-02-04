@@ -3,9 +3,10 @@ import 'package:scanner/core/errors/failure.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:scanner/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:scanner/features/route/presentation/bloc/route_bloc.dart';
+import 'package:scanner/features/scan/presentation/bloc/scan_bloc.dart';
 
 abstract class BaseState extends Equatable
-    implements AuthState, RouteState, ProfileState {}
+    implements AuthState, RouteState, ProfileState, ScanState {}
 
 class InitialState extends BaseState {
   @override
