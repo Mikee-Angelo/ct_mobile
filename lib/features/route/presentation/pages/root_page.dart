@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:scanner/core/bloc/base_state.dart';
-import 'package:scanner/core/errors/exception.dart';
 import 'package:scanner/core/errors/failure.dart';
 import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:scanner/features/auth/presentation/pages/login_page.dart';

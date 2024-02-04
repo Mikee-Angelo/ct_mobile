@@ -28,3 +28,12 @@ class GotCheckToken extends AuthState {
   @override
   List<Object?> get props => [res];
 }
+
+class GotLogout extends AuthState {
+  GotLogout(this.res);
+
+  final LogoutEntity res;
+  
+  @override
+  List<Object?> get props => [res];
+}

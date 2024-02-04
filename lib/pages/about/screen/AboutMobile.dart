@@ -2,7 +2,7 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
-import 'package:scanner/pages/drawer/AppDrawer.dart';
+import 'package:scanner/pages/drawer/screens/app_drawer_widget.dart';
 
 class AboutMobile extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class AboutMobileState extends State<AboutMobile> {
       appBar: AppBarMain(
         context: context,
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawerWidget(),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
           horizontal: ScreenUtil.getInstance().getWidth(30),
@@ -128,9 +128,8 @@ class AboutMobileState extends State<AboutMobile> {
                     child: Text(
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce non finibus metus.',
                       style: TextStyle(
-                        fontSize: ScreenUtil.getInstance().getSp(12),
-                        color: Branding.textColor
-                      ),
+                          fontSize: ScreenUtil.getInstance().getSp(12),
+                          color: Branding.textColor),
                       textAlign: TextAlign.center,
                     ),
                   ),

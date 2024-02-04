@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:scanner/features/auth/data/models/login_model.dart';
+import 'package:scanner/features/auth/data/models/logout_model.dart';
 import 'package:scanner/features/auth/data/models/register_model.dart';
 
 part 'auth_remote.g.dart';
@@ -14,4 +15,7 @@ abstract class AuthRemote {
 
   @POST('/register')
   Future<RegisterModel> register(@Body() Map<String, dynamic> params);
+
+  @POST('/logout')
+  Future<LogoutModel> logout();
 }

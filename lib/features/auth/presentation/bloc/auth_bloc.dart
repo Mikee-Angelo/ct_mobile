@@ -6,11 +6,7 @@ import 'package:scanner/core/bloc/base_state.dart';
 import 'package:scanner/core/usecases/usecase.dart';
 import 'package:scanner/features/auth/data/models/login_params_model.dart';
 import 'package:scanner/features/auth/data/models/register_params_model.dart';
-import 'package:scanner/features/auth/domain/entities/login_entity.dart';
-import 'package:scanner/features/auth/domain/entities/register_entity.dart';
-import 'package:scanner/features/auth/domain/usecases/check_token_usecase.dart';
-import 'package:scanner/features/auth/domain/usecases/login_use_case.dart';
-import 'package:scanner/features/auth/domain/usecases/register_usecase.dart';
+import 'package:scanner/features/auth/domain/domain.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -20,15 +16,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     this._login,
     this._register,
     this._checkToken,
+    this._logout,
   ) : super(InitialState()) {
     on<OnLogin>(_onLogin);
     on<OnRegister>(_onRegister);
     on<OnCheckToken>(_onCheckToken);
+    on<OnLogout>(_onLogout);
   }
 
   final LoginUsecase _login;
   final RegisterUsecase _register;
   final CheckTokenUsecase _checkToken;
+  final LogoutUsecase _logout;
 
   FutureOr<void> _onLogin(
     OnLogin event,
@@ -67,6 +66,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     res.fold(
       (l) => emit(ErrorState(l)),
       (r) => emit(GotCheckToken(r)),
+    );
+  }
+
+  FutureOr<void> _onLogout(
+    OnLogout event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(LoadingState());
+
+    final res = await _logout(NoParams());
+
+    res.fold(
+      (l) => emit(ErrorState(l)),
+      (r) => emit(GotLogout(r)),
     );
   }
 }

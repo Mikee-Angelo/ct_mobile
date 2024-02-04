@@ -1,17 +1,17 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
-import 'package:scanner/pages/drawer/AppDrawer.dart';
+import 'package:scanner/pages/drawer/screens/app_drawer_widget.dart';
 import 'package:scanner/pages/logs/bloc/LogsBloc.dart';
 import 'package:scanner/widgets/CustomBadge.dart';
 import 'package:scanner/widgets/UserIcon.dart';
 
 class LogsMobile extends StatefulWidget {
+  const LogsMobile({super.key});
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -35,7 +35,7 @@ class LogsMobileState extends State<LogsMobile> {
       appBar: AppBarMain(
         context: context,
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawerWidget(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
