@@ -23,3 +23,8 @@ class OnCheckToken extends AuthEvent {
   @override
   List<Object?> get props => [];
 }
+
+class OnLogout extends AuthEvent {
+  @override
+  List<Object?> get props => [];
+}

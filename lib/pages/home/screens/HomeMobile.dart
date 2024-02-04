@@ -1,21 +1,19 @@
-import 'package:badges/badges.dart';
-import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nb_utils/nb_utils.dart';
+import 'package:scanner/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:scanner/features/auth/presentation/pages/login_page.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
-import 'package:scanner/pages/drawer/AppDrawer.dart';
+import 'package:scanner/pages/drawer/screens/app_drawer_widget.dart';
 import 'package:scanner/pages/home/bloc/HomeBloc.dart';
 import 'package:scanner/pages/logs/bloc/LogsBloc.dart';
 import 'package:scanner/settings/settings.dart';
-import 'package:scanner/widgets/CustomBadge.dart';
-import 'package:scanner/widgets/UserIcon.dart';
 
 class HomeMobile extends StatefulWidget {
+  const HomeMobile({super.key});
+
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return HomeMobileState();
   }
 }
@@ -33,17 +31,20 @@ class HomeMobileState extends State<HomeMobile> {
   Widget build(BuildContext context) {
     Settings settings = Settings();
     String image = settings.qr + 'qr/';
-    // TODO: implement build
-    return WillPopScope(
-      onWillPop: () async => false,
+
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is GotLogout) {
+          const LoginPage().launch(context, isNewTask: true);
+        }
+      },
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBarMain(context: context),
-        drawer: AppDrawer(),
+        drawer: const AppDrawerWidget(),
         body: FutureBuilder(
           future: home.getProfile(),
           builder: (context, snapshot) {
-            
             // Note: This will be removed on next pull request
             return SizedBox.shrink();
             // if (snapshot.data == null) {

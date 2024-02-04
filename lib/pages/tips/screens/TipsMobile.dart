@@ -1,11 +1,12 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:scanner/core/themes/branding.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
-import 'package:scanner/pages/drawer/AppDrawer.dart';
+import 'package:scanner/pages/drawer/screens/app_drawer_widget.dart';
 
 class TipsMobile extends StatefulWidget {
+  const TipsMobile({super.key});
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -21,7 +22,7 @@ class TipsMobileState extends State<TipsMobile> {
       appBar: AppBarMain(
         context: context,
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawerWidget(),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
           horizontal: ScreenUtil.getInstance().getWidth(30),

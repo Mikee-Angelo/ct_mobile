@@ -1,12 +1,13 @@
 import 'package:flustars/flustars.dart';
 import 'package:flutter/material.dart';
 import 'package:scanner/pages/appbar/AppBarMain.dart';
-import 'package:scanner/pages/drawer/AppDrawer.dart';
+import 'package:scanner/pages/drawer/screens/app_drawer_widget.dart';
 
 class PrivacyMobile extends StatefulWidget {
+  const PrivacyMobile({super.key});
+
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return PrivacyMobileState();
   }
 }
@@ -20,7 +21,7 @@ class PrivacyMobileState extends State<PrivacyMobile> {
       appBar: AppBarMain(
         context: context,
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawerWidget(),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
           left: ScreenUtil.getInstance().getWidth(30),

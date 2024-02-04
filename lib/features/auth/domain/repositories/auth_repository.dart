@@ -7,4 +7,5 @@ abstract class AuthRepository {
   Future<Either<Failure, LoginEntity>> login(LoginParamsModel params);
   Future<Either<Failure, RegisterEntity>> register(RegisterParamsModel params);
   Future<Either<Failure, LoginEntity>> checkToken();
+  Future<Either<Failure, LogoutEntity>> logout();
 }
